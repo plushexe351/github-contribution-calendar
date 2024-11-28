@@ -1,0 +1,116 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.total-contributions {
+    margin-bottom: 0.3rem;
+}
+
+.calendar-labels {
+    margin-bottom: 0.3rem;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+
+.github-calendar {
+    width: 100%;
+    padding: 1rem;
+    margin-bottom: 20px;
+    overflow-y: scroll;
+}
+
+.border-container {
+    border-radius: 0.3rem;
+    width: max-content;
+    padding: 1rem;
+    border: 1px solid #dddddd63;
+}
+
+.month-label {
+    padding: 5px;
+    background-color: #f4f4f4;
+    border-radius: 4px;
+}
+.day-labels{
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    flex-direction: column;
+    gap:4px;
+}
+.day-labels > *{
+    margin-right:0.5rem;
+}
+
+.day-labels > *:nth-child(odd){
+    visibility: hidden;
+}
+
+
+
+.calendar-body {
+    width: max-content;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    gap: 4px;
+    justify-content: start;
+    align-items: start;
+}
+
+.week {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.calendar-cell {
+    border-radius: 3px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.calendar-cell:hover {
+    opacity: 0.8;
+}
+
+.calendar-cell:hover::after {
+    content: attr(data-contribution-tooltip);
+    position: relative;
+    z-index: 999;
+    background: #333;
+    color: #fff;
+    padding: 5px;
+    font-size: 12px;
+    border-radius: 3px;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+}
+
+.month-labels {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+
+}
+
+.month-label {
+    width: calc(20px * 5.2);
+}
+
+.key{
+    margin-top:0.5rem;
+    display: flex;
+    gap:4px;
+    justify-content: end;
+    align-items: center;
+}
