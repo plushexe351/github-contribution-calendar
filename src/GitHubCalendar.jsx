@@ -4,7 +4,11 @@ import "./Loader.css";
 import { defaultProps } from "./DefaultProps";
 import { setTheme } from "./theme";
 import Loader from "./Loader";
-import { getStartDateOfYear, hexToRgba, fetchContributionsData } from "./helper";
+import {
+  getStartDateOfYear,
+  hexToRgba,
+  fetchContributionsData,
+} from "./helper";
 
 const GitHubCalendar = ({
   token,
@@ -19,7 +23,7 @@ const GitHubCalendar = ({
   fontSize = defaultProps.fontSize,
   titleColor = defaultProps.titleColor,
   showKeys = defaultProps.showKeys,
-  customTheme = {}
+  customTheme = {},
 }) => {
   const [days, setDays] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -27,7 +31,7 @@ const GitHubCalendar = ({
 
   let contributionsPalette = theme !== "custom" ? setTheme(theme) : customTheme;
 
-  if(theme==="honeymoon" || theme==="minecraft"){
+  if (theme === "honeymoon" || theme === "minecraft") {
     showKeys = false;
   }
 
@@ -35,7 +39,11 @@ const GitHubCalendar = ({
     const fetchData = async () => {
       try {
         setLoading(true);
-        const contributionsData = await fetchContributionsData(token, username, year);
+        const contributionsData = await fetchContributionsData(
+          token,
+          username,
+          year
+        );
         setDays(contributionsData);
         setTotalContributions(
           contributionsData.reduce((sum, day) => sum + day.contributionCount, 0)
@@ -51,20 +59,20 @@ const GitHubCalendar = ({
   }, [token, username, year]);
 
   // cell styles for exclusive and default themes
-if(theme === "minecraft"){
-  background = "#c6c6c6"
-  contributionsPalette = {
-    noContributions : "#8b8b8b",
-    low:"#868e07",
-    moderate:"#6a750c",
-    high:"#4a5c08",
-    veryHigh: "#273e06"
+  if (theme === "minecraft") {
+    background = "#c6c6c6";
+    contributionsPalette = {
+      noContributions: "#8b8b8b",
+      low: "#868e07",
+      moderate: "#6a750c",
+      high: "#4a5c08",
+      veryHigh: "#273e06",
+    };
   }
-}
   const getCellStyle = (cell) => {
     const isValidDate = cell && cell.date && cell.date !== "";
     const cellStyle = {
-      "minecraft": {
+      minecraft: {
         width: `${cellSize}px`,
         height: `${cellSize}px`,
         fontSize: `${cellSize - 5}px`,
@@ -76,22 +84,22 @@ if(theme === "minecraft"){
         -1.1px 1.1px 0px black,  /* Bottom-left shadow */
         1.1px 1.1px 0px black    /* Bottom-right shadow */
       `,
-      borderRadius:"0",
-      borderLeft:"1px solid black",
-      borderTop:"1px solid black",
-      borderRight:"1px solid white",
-      borderBottom:"1px solid white",
+        borderRadius: "0",
+        borderLeft: "1px solid black",
+        borderTop: "1px solid black",
+        borderRight: "1px solid white",
+        borderBottom: "1px solid white",
         backgroundColor: isValidDate
           ? getColorForContributions(cell?.contribution || 0)
           : "transparent",
       },
-      "honeymoon": {
+      honeymoon: {
         width: `${cellSize}px`,
         height: `${cellSize}px`,
         fontSize: `${cellSize - 5}px`,
         visibility: isValidDate ? "visible" : "hidden", // Hide invalid cells
       },
-      "default": {
+      default: {
         backgroundColor: isValidDate
           ? getColorForContributions(cell?.contribution || 0)
           : "transparent",
@@ -99,10 +107,10 @@ if(theme === "minecraft"){
         height: `${cellSize}px`,
         border: `1px solid ${hexToRgba(contributionsPalette.low, 0.12)}`,
         visibility: isValidDate ? "visible" : "hidden",
-      }
-    }
+      },
+    };
     return cellStyle[theme] || cellStyle.default;
-  }
+  };
 
   const getColorForContributions = (count) => {
     if (count === 0) return contributionsPalette.noContributions;
@@ -148,7 +156,18 @@ if(theme === "minecraft"){
   const calendarData = generateCalendar();
 
   const monthLabels = [
-    "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec",
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
   ];
 
   const dayLabels = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
@@ -179,7 +198,7 @@ if(theme === "minecraft"){
               <div
                 key={index}
                 className="calendar-month-label"
-                style={{ width: `${cellSize * 4.75 + 12}px` }}
+                style={{ minWidth: `${cellSize * 4.75 + 12}px` }}
               >
                 {month}
               </div>
@@ -188,13 +207,21 @@ if(theme === "minecraft"){
         )}
         <div className="calendar-body">
           {showLabels && (
-            <div className="day-labels" style={{ fontSize: `${fontSize}px`, color: labelColor }}>
+            <div
+              className="day-labels"
+              style={{ fontSize: `${fontSize}px`, color: labelColor }}
+            >
               {dayLabels.map((day, index) => (
-                <div key={index} className="day-label" style={{ height: `${cellSize}px` }}>
+                <div
+                  key={index}
+                  className="day-label"
+                  style={{ height: `${cellSize}px` }}
+                >
                   {day}
                 </div>
               ))}
-            </div>)}
+            </div>
+          )}
           {Array.from({ length: 53 }, (_, weekIndex) => (
             <div className="week" key={weekIndex}>
               {Array.from({ length: 7 }, (_, dayIndex) => {
@@ -206,23 +233,24 @@ if(theme === "minecraft"){
                   <div
                     key={cell ? cell.day : `empty-${dayIndex}`}
                     className="calendar-cell"
-                    data-contribution-tooltip={`${isValidDate ? cell?.contribution : 0
-                      } contributions on ${new Date(cell?.date).toDateString()}`}
+                    data-contribution-tooltip={`${
+                      isValidDate ? cell?.contribution : 0
+                    } contributions on ${new Date(cell?.date).toDateString()}`}
                     style={getCellStyle(cell)}
-
                   >
-                    {theme === "honeymoon" && (cell?.contribution === 0 ? "🤍" : "♥️")}
-                    {theme === "minecraft" && (
-                      cell?.contribution === 0
-                        ? ""  // No contributions 
+                    {theme === "honeymoon" &&
+                      (cell?.contribution === 0 ? "🤍" : "♥️")}
+                    {theme === "minecraft" &&
+                      (cell?.contribution === 0
+                        ? "" // No contributions
                         : cell?.contribution <= 2
-                          ? "🏹"  // Low contributions - Bow
-                          : cell?.contribution <= 4
-                            ? "🗡️"  // Moderate contributions - Sword
-                            : cell?.contribution <= 6
-                              ? "🍎"  // High contributions - Apple
-                              : "🪙"  // Very high contributions - Coin
-                    )}
+                        ? "🏹" // Low contributions - Bow
+                        : cell?.contribution <= 4
+                        ? "🗡️" // Moderate contributions - Sword
+                        : cell?.contribution <= 6
+                        ? "🍎" // High contributions - Apple
+                        : "🪙") // Very high contributions - Coin
+                    }
                   </div>
                 );
               })}
@@ -230,26 +258,27 @@ if(theme === "minecraft"){
           ))}
         </div>
         {showKeys && (
-
-          <div className="key" style={{fontSize:`${fontSize}px`, color: labelColor}}>
-          Less
-  {Object.entries(contributionsPalette).map(([key, color], index) => (
-    <div
-    key={index}
-    className="calendar-cell"
-    style={{
-      height: `${cellSize}px`,
-      width: `${cellSize}px`,
-      backgroundColor: color,
-      border: "1px solid rgba(0, 0, 0, 0.1)", // Optional: To make each cell more defined
-    }}
-    title={key} // Optional: Tooltip for better context
-    ></div>
-  ))}
-  More
-</div>
-)}
-
+          <div
+            className="key"
+            style={{ fontSize: `${fontSize}px`, color: labelColor }}
+          >
+            Less
+            {Object.entries(contributionsPalette).map(([key, color], index) => (
+              <div
+                key={index}
+                className="calendar-cell"
+                style={{
+                  height: `${cellSize}px`,
+                  width: `${cellSize}px`,
+                  backgroundColor: color,
+                  border: "1px solid rgba(0, 0, 0, 0.1)", // Optional: To make each cell more defined
+                }}
+                title={key} // Optional: Tooltip for better context
+              ></div>
+            ))}
+            More
+          </div>
+        )}
       </div>
     </div>
   );

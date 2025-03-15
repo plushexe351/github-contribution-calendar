@@ -66,71 +66,71 @@ export default App;
 
 1. Classic 
 
-![Preview](https://i.imgur.com/VwCOqvU.png)
+![Preview](./assets/gc-classic.png)
 
 2. Aurora
 
-![Preview](https://i.imgur.com/ZwmpUuq.png)
+![Preview](./assets/gc-aurora.png)
 
 
 3. Velvet
 
-![Preview](https://i.imgur.com/sGsBP5r.png)
+![Preview](./assets/gc-velvet.png)
 
 
 4. Forest
 
-![Preview](https://i.imgur.com/ZdCQOju.png)
+![Preview](./assets/gc-forest.png)
 
 
 5. Crimson
 
-![Preview](https://i.imgur.com/o465Aw9.png)
+![Preview](./assets/gc-crimson.png)
 
 
 6. Solar
 
-![Preview](https://i.imgur.com/HRUmvZs.png)
+![Preview](./assets/gc-solar.png)
 
 
 7. Prism
 
-![Preview](https://i.imgur.com/yyJTLSS.png)
+![Preview](./assets/gc-prism.png)
 
 
 8. Galaxy
 
-![Preview](https://i.imgur.com/qd3QDC9.png)
+![Preview](./assets/gc-galaxy.png)
 
 
 9. Pastel
 
-![Preview](https://i.imgur.com/4VjWmvw.png)
+![Preview](./assets/gc-pastel.png)
 
 
 10. Monotone
 
-![Preview](https://i.imgur.com/kczT4hG.png)
+![Preview](./assets/gc-monotone.png)
 
 
 11. Prison
 
-![Preview](https://i.imgur.com/MpWsljn.png)
+![Preview](./assets/gc-prison.png)
 
 
 12. Chocolate
 
-![Preview](https://i.imgur.com/x44DjRZ.png)
+![Preview](./assets/gc-chocolate.png)
 
 
 13. Honeymoon
 
-![Preview](https://i.imgur.com/RBbaGti.png)
+![Preview](./assets/gc-honeymoon.png)
 
 
 14. Minecraft
 
-![Preview](https://i.imgur.com/nbrPE8r.png)
+![Preview](./assets/gc-minecraft.png)
 
 
 ### Or Create your own Theme

@@ -14,20 +14,25 @@
     display: flex;
     justify-content: start;
     align-items: center;
+    flex-wrap: nowrap;
 }
-
+.calendar-labels >*{
+    flex-shrink:none;
+}
 .github-calendar {
-    width: 100%;
-    padding: 1rem;
+    max-width: 100%;
+    padding: 0;
     margin-bottom: 20px;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 
 .border-container {
-    border-radius: 0.3rem;
-    width: max-content;
+    border-radius: 0.4rem;
+    width: 100%;
+    max-width: 100%;
+    overflow-y: auto;
     padding: 1rem;
-    border: 1px solid #dddddd63;
+    border: 1px solid rgba(128, 128, 128, 0.459);
 }
 
 .month-label {
